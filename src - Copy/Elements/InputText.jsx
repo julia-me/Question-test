@@ -1,0 +1,30 @@
+import React from 'react';
+
+const InputText = ({oneQuestion, number, setAnsver}) =>{
+
+  const result =(userAnswer) => {
+    oneQuestion.answer.map( oneAnsw => {
+      if(userAnswer.toUpperCase() === oneAnsw.title.toUpperCase()){
+         return setAnsver(oneAnsw.point)
+      } 
+      else{
+        return setAnsver(0)
+      }
+    });
+  }
+
+  return (
+    <div className='card' key={oneQuestion.title}>
+      <div className='card-body'>
+        <h1> {number+1}. {oneQuestion.title} ?</h1>
+        {oneQuestion.url && <img src={oneQuestion.url} alt="oneQuestion.title"/>}
+        {oneQuestion.answer.map(elem => {
+          return <input onChange={(e)=> result(e.target.value) } key={elem.title} type="text" placeholder="введите ответ" />
+        })}
+      </div>
+    </div>
+  );
+}
+
+ 
+export default InputText;
