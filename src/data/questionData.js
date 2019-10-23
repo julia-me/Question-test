@@ -34,7 +34,7 @@ const geographyAQuestionsArr =[
   },
   {
     title: 'Моря Атлантического океана, омывающие Россию:',
-    type: 'Checkboxbox',
+    type: 'Checkbox',
     answer: [{
       title: 'Балтийское море',
       isTrue: true,
@@ -142,7 +142,7 @@ const geographyAQuestionsArr =[
   },
   {
     title: 'Изображение какого животного можно увидеть на гербе Австралии',
-    type: 'Checkboxbox',
+    type: 'Checkbox',
     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz7A2xQM2MB_gj5DKhZFTRn9Q8OqA3eBo_Q7oCLW5I7v4hd0KFkg',
     answer: [
     {
@@ -292,7 +292,7 @@ const randomQuestionsArr = [
   //     point: 1,
   // },
   {
-      type: "Checkboxbox",
+      type: "Checkbox",
       title: "Выберите страны в Европе",
       answer: [
           {
@@ -388,7 +388,7 @@ const randomQuestionsArr = [
       ]
   },
   {
-      type: "Checkboxbox",
+      type: "Checkbox",
       title: "Выберите из списка драгоценный металл...",
       answer: [
           {

@@ -10,7 +10,7 @@ const InputCheckbox = ({oneQuestion, number, setAnsver}) =>{
   const [arrOfAnswers, setArrOfAnswers]= useState(initialAnswers(oneQuestion.answer))
 
   useEffect(()=> {
-    console.log(arrOfAnswers)
+    // console.log(arrOfAnswers)
   })
 
   const checkFunction = (e, index) => {
