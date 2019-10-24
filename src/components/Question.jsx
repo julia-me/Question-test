@@ -3,30 +3,14 @@ import InputText from '../Elements/InputText'
 import InputRadio from '../Elements/InputRadio'
 import InputCheckbox from '../Elements/InputCheckbox'
 import Select from '../Elements/Select'
-// import Result from './Result'
-// import Message from './Message'
-// import Timer from '../Elements/Timer'
-// import TimeOver from './TimeOver'
 import { Link } from 'react-router-dom';
-// import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-
-
 
 const Question = (props)  => {
-  const {data,  maxPoints, setMaxPoints, setTotalPoint} = props
+  const {data, setMaxPoints, setTotalPoint} = props
   const [answersModel, setAnswersModel]=useState(new Array(data.length))
   let totalPoint =0
-  // const [resultIsActive, setResultIsActive]=useState(false)
-  // const [res, setRes] = useState(0)
-  // const [correctAnswers, setCorrectAnswers] = useState(0)
-  // const [messageWindow, semtMessageWindow] = useState(true)
-  // const [testIsOver, setTestIsOver] = useState(false)
-  // const timeOntext = 1;
-  // const [try1, setTry1]=useState('noth')
-  
-  // useEffect(()=> {
-  //   setAnswersModel(new Array(data.length))
-  // },[])
+
+  console.log('data', data)
 
   useEffect(()=> {
     console.log(answersModel)
@@ -61,30 +45,18 @@ const Question = (props)  => {
         })
     })
     setMaxPoints(totalPoint)
-    console.log(totalPoint)
-    console.log(maxPoints)
   }
   totalQuestionPoints()
 
   const sentResultHendel =(e) => {
     summ()
-    // setTotalPoint
-    // setMaxPoints([...answersModel])
-    console.log(maxPoints)
   }
 
 
   return (
     <div className="container" >
-    {/* {
-    messageWindow && <Message 
-    semtMessageWindow={semtMessageWindow} 
-    data={data}
-    timeOntext={timeOntext}
-    setShowTimer={setShowTimer}/>  
-    } */}
     {
-    <div className="div">
+    <div className="question-test">
       {
       data.map((oneQuestion, index) => {
         switch (oneQuestion.type) {
@@ -126,7 +98,8 @@ const Question = (props)  => {
       to='/result'
       onClick={(e)=> sentResultHendel(e)}
       >
-         take result </Link>
+       Посмотреть результат
+      </Link>
       </div>
     }
 

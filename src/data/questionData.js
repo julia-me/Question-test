@@ -119,8 +119,8 @@ const geographyAQuestionsArr =[
     answer: [
       {
         title: 'звезда',
-        isTrue: false,
-        point: 0,
+        isTrue: true,
+        point: 1,
       },
       {
         title: 'спутник',
@@ -134,8 +134,8 @@ const geographyAQuestionsArr =[
       },
       {
         title: 'планета',
-        isTrue: true,
-        point: 1,
+        isTrue: false,
+        point: 0,
       },
 
     ]
@@ -231,8 +231,8 @@ const biologyQuestionsArr = [
   {
     title: 'В делении клеток принимают участие:',
     type: "Checkbox",
-    answer: [{ title: ' клеточный центр ', isTrue: true, point: 1 },
-              { title: 'рибосома', isTrue: true, point: 1 },
+    answer: [{ title: ' клеточный центр ', isTrue: true, point: 0.5  },
+              { title: 'рибосома', isTrue: true, point: 0.5 },
               { title: 'хлоропласт', isTrue: false, point: 0 },
               { title: 'вакуоли', isTrue: false, point: 0 }
     ],
@@ -271,26 +271,32 @@ const biologyQuestionsArr = [
   {
     title: 'Что происходит под действием ферментов?',
     type: "Checkbox",
-    answer: [{ title: 'разрушение клеток', isTrue: true, point: 1 },
-              { title: 'синтез и распад веществ в клетке', isTrue: true, point: 1 },
+    answer: [{ title: 'разрушение клеток', isTrue: true, point: 0.5  },
+              { title: 'синтез и распад веществ в клетке', isTrue: true, point: 0.5  },
               { title: 'деление клеток', isTrue: false, point: 0 },
               { title: 'сокращение клеток', isTrue: false, point: 0 }
     ],
   },
 ];
 const randomQuestionsArr = [
-  // {
-  //     type: "Text",
-  //     title: "Первая столица Украины",
-  //     answer: 'Харьков',
-  //     point: 1,
-  // },
-  // {
-  //     type: "Text",
-  //     title: "Столица США",
-  //     answer: 'Вашингтон',
-  //     point: 1,
-  // },
+  {
+    title: 'Первая столица Украины',
+    type: 'Text',
+    answer: [{
+      title: 'Харьков',
+      isTrue: true,
+      point: 1,
+    }]
+  },
+  {
+    title: 'Столица США',
+    type: 'Text',
+    answer: [{
+      title: 'Вашингтон',
+      isTrue: true,
+      point: 1,
+    }]
+  },
   {
       type: "Checkbox",
       title: "Выберите страны в Европе",
@@ -298,17 +304,17 @@ const randomQuestionsArr = [
           {
             title: "Франция",
               isTrue: true,
-              point: 1,
+              point: 0.5 ,
           },
           {
             title: "Германия",
               isTrue: true,
-              point: 1,
+              point: 0.5 ,
           },
           {
             title: "Греция",
               isTrue: true,
-              point: 1,
+              point: 0.5 ,
           },
           {
             title: "Замбия",
@@ -394,12 +400,12 @@ const randomQuestionsArr = [
           {
             title: "Золото",
               isTrue: true,
-              point: 1,
+              point: 0.5 ,
           },
           {
             title: "Платина",
               isTrue: true,
-              point: 1,
+              point: 0.5 ,
           },
           {
             title: "Железо",
