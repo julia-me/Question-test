@@ -8,12 +8,21 @@ const initialAnswers = (answers) => {
 
 const InputCheckbox = ({oneQuestion, number, setAnsver}) =>{
   const [arrOfAnswers, setArrOfAnswers]= useState(initialAnswers(oneQuestion.answer))
+  const [decorClass, setDecorClass]= useState(new Array(oneQuestion.answer.length))
 
 
   const checkFunction = (e, index) => {
     const newArr=[...arrOfAnswers];
+    let arr = [...decorClass];
     newArr[index].isChecked=e.target.checked;
-
+    if(e.target.checked){
+      arr[index] = 'chosen';
+      setDecorClass(arr);
+    }
+    else{
+      arr[index] = '';
+      setDecorClass(arr);
+    }
     let resultOfRight = newArr
                   .filter(elem =>elem.isChecked)
                   .map(el=> el.point)
@@ -39,7 +48,7 @@ const InputCheckbox = ({oneQuestion, number, setAnsver}) =>{
         {oneQuestion.answer.map( (elem, index) => {
           return(
             <div key={elem.title} >
-                <label  htmlFor={number+ elem.title}> {elem.title}   
+                <label  className={decorClass[index]}   htmlFor={number+ elem.title}> {elem.title}   
                 <input 
                 onChange={(e)=> checkFunction(e, index)} 
                 value={index} 

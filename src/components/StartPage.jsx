@@ -22,19 +22,5 @@ const Start = ({allTestTitles})  =>{
   );
 }
 
-// let allTestsArr= [
-// ["randomQuestionsArr", ['randomQuestionsArr1', 'randomQuestionsArr2']],
-// ["biologyQuestionsArr", ['biologyQuestionsArr3', 'biologyQuestionsArr1', 'biologyQuestionsArr2']],
-// ["geographyAQuestionsArr", ['geographyAQuestionsArr2', 'geographyAQuestionsArr4']],
-// ]
-
-//allTestsArr.find(el => {
-// 	return el[0] = 'biologyQuestionsArr'
-// })
-
-// allTestsArr.find(test => { 
-//   console.log(test[0] === 'biologyQuestionsArr') 
-//   return test[0] === 'biologyQuestionsArr'
-// })
  
 export default Start;

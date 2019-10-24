@@ -6,14 +6,14 @@ import Select from '../Elements/Select'
 import { Link } from 'react-router-dom';
 
 const Question = (props)  => {
-  const {data, setMaxPoints, setTotalPoint} = props
+  const {data, setMaxPoints} = props
   const [answersModel, setAnswersModel]=useState(new Array(data.length))
   let totalPoint =0
-
-  console.log('data', data)
+  let resultPoints=0
 
   useEffect(()=> {
     console.log(answersModel)
+    summ()
   },[answersModel])
   
   const setAnswer = (index) => {
@@ -26,14 +26,12 @@ const Question = (props)  => {
   }
 
   const summ =() => {
-    setAnswersModel([])
-    let resultPoints=0
     answersModel.forEach(point => {
       if(point){
          resultPoints+= point
       }
     })
-    setTotalPoint(resultPoints)
+    localStorage.setItem('answ', JSON.stringify(resultPoints)) 
   }
 
   const totalQuestionPoints = () =>{
@@ -47,10 +45,6 @@ const Question = (props)  => {
     setMaxPoints(totalPoint)
   }
   totalQuestionPoints()
-
-  const sentResultHendel =(e) => {
-    summ()
-  }
 
 
   return (
@@ -96,7 +90,6 @@ const Question = (props)  => {
       <Link 
       className="btn btn-primary" 
       to='/result'
-      onClick={(e)=> sentResultHendel(e)}
       >
        Посмотреть результат
       </Link>

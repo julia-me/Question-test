@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const Result = ({totalPoint, maxPoints})  =>{
+const Result = ({maxPoints})  =>{
     console.log(maxPoints)
+    let totalPoint=JSON.parse(localStorage.getItem('answ'))
+    localStorage.setItem('answ', JSON.stringify(0))  
+
  
     return (
         <div className="result">
