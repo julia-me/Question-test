@@ -17,7 +17,7 @@ const Timer = ({usersTime})  =>{
                     history.push('/result')                 
                 }
             }, 1000)
-    }, [time])
+    }, [time, history])
     
     
     return (

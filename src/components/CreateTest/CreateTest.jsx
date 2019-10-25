@@ -7,11 +7,11 @@ import InCorrectAnswer from './InCorrectAnswer'
 let newArrTest = JSON.parse(localStorage.getItem('new')) || []
 
 
-const CreateTest = ({allTestTitles})  =>{
+const CreateTest = ({allTestTitles, setNewQuestions})  =>{
     const [correctAnswerInfo, setCorrectAnswerInfo]=useState({
         title:'',
         isTrue: true,
-        point: 1,
+        point:1,
     })
     const [inCorrectAnswerInfo, setInCorrectAnswerInfo]=useState({
         title:'',
@@ -50,6 +50,7 @@ const CreateTest = ({allTestTitles})  =>{
         if(newTestName && correctAnswerInfo.title && correctAnswerInfo.point  && inCorrectAnswerInfo.title &&newQuestion.title){
             newArrTest.push(newTest)
             localStorage.setItem('new', JSON.stringify(newArrTest))
+            setNewQuestions(JSON.parse(localStorage.getItem('new')) || [])
         }
     }
  

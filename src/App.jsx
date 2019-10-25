@@ -10,27 +10,16 @@ import CreateTest from './components/CreateTest/CreateTest'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 localStorage.setItem('test', JSON.stringify([]))
 const allTestsArr=Object.entries(Questions)
-// let newQuestions = JSON.parse(localStorage.getItem('new')) || []
 
-// allTestsArr.map(arr => {
-//   newQuestions.map( quest => {
-//     if(arr[0] === quest[0]){
-//       arr[1].push(quest[1])
-//     }
-//   })
-// })
-// console.log('newQuestions', newQuestions)
 
 
 const App = ()  =>{
   const [maxPoints, setMaxPoints]=useState('')
   const [usersTime, setUsersTime]= useState(1)
   const [data, setData] = useState([])
+  const [earnedPoints, setEarnedPoints]= useState(0)
   const allTestTitles= Object.keys(Questions)
-
   const [newQuestions, setNewQuestions] = useState(JSON.parse(localStorage.getItem('new')) || [])
-
-  console.log(allTestsArr)
 
 
   useEffect(()=> {
@@ -77,11 +66,12 @@ const App = ()  =>{
 
       <Route path="/result">
         < Result 
-        maxPoints={maxPoints}/>
+        maxPoints={maxPoints}
+        earnedPoints={earnedPoints}/>
       </Route> 
 
       <Route path="/create">
-        < CreateTest allTestTitles={allTestTitles}/>
+        < CreateTest allTestTitles={allTestTitles} setNewQuestions={setNewQuestions}/>
       </Route> 
 
       <Route path="/:pageTitle" component={TestPage}/>
