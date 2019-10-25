@@ -171,3 +171,12 @@ span {
   flex-direction: column;
   align-items: center;
 }
+
+.newTest{
+  margin: 50px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border: 3px solid rgb(197, 78, 98);
+}

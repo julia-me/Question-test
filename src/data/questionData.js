@@ -209,7 +209,6 @@ const geographyAQuestionsArr =[
     ]
   },
 ]
-
 const biologyQuestionsArr = [
   {
     title: 'Хранителем наследственной информации являются:',

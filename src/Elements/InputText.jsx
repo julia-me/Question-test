@@ -14,9 +14,10 @@ const InputText = ({oneQuestion, number, setAnsver}) =>{
       <div className='card-body'>
         <h1> {number+1}. {oneQuestion.title} ?</h1>
         {oneQuestion.url && <img src={oneQuestion.url} alt="oneQuestion.title"/>}
-        {oneQuestion.answer.map(elem => {
+        <input onChange={(e)=> answerValidation(e.target.value) } key={oneQuestion.answer[0].title} type="text" placeholder="введите ответ" />
+        {/* {oneQuestion.answer.map(elem => {
         return <input onChange={(e)=> answerValidation(e.target.value) } key={elem.title} type="text" placeholder="введите ответ" />
-        })}
+        })} */}
       </div>
     </div>
   );

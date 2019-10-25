@@ -12,7 +12,6 @@ const Question = (props)  => {
   let resultPoints=0
 
   useEffect(()=> {
-    console.log(answersModel)
     summ()
   },[answersModel])
   
