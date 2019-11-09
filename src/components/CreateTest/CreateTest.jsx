@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import NewQuestion from './NewQuestion' 
 import CorrectAnswer from './CorrectAnswer' 
@@ -13,43 +13,36 @@ const CreateTest = ({allTestTitles, setNewQuestions})  =>{
         isTrue: true,
         point:1,
     })
-    const [inCorrectAnswerInfo, setInCorrectAnswerInfo]=useState({
-        title:'',
-        isTrue: false,
-        point: 0,
-    })
-    // name of test to push question
-    const [newTestName, setNewTestName]=useState('')
-    // arr of question info
+    const [inCorrectAnswerInfo, setInCorrectAnswerInfo]=useState();
+    const [newTestName, setNewTestName]=useState('');
     const [newQuestion, setNewQuestion]=useState({
         type: 'Select',
         answer: []
-    }) 
-    //total info to push
-    const [newTest, setNewTest]=useState([])
-
-    //for button add answer
-    const [addIncorrect, setAddIncorrect]=useState({
-        one: false,
-        two: false,
-        firstButton: true,
-        secondButton: false,
-    })
+    });
 
     const createTest = (e) => {
         setNewTestName(e.target.value)
     }
 
-    useEffect(()=> {
-        setNewQuestion({...newQuestion, answer: [correctAnswerInfo,inCorrectAnswerInfo]})
-        setNewTest([newTestName, newQuestion])
-
-    },[inCorrectAnswerInfo, correctAnswerInfo, newTestName])
 
     const testIsReadyHendel = (e) => {
-        if(newTestName && correctAnswerInfo.title && correctAnswerInfo.point  && inCorrectAnswerInfo.title &&newQuestion.title){
+        let arr = inCorrectAnswerInfo.split(', ')
+        let incorrectArr=[];
+        arr.map(answer=>{
+            return incorrectArr.push({
+                title: answer,
+                isTrue: false,
+                point: 0,
+            })
+        });
+        if(newTestName && correctAnswerInfo.title && correctAnswerInfo.point  && inCorrectAnswerInfo && newQuestion.title){
+            incorrectArr.map(el=> {
+                return newQuestion.answer.push(el)
+            })
+            newQuestion.answer.push(correctAnswerInfo)
+            let newTest = [newTestName, newQuestion]
             newArrTest.push(newTest)
-            localStorage.setItem('new', JSON.stringify(newArrTest))
+            localStorage.setItem('new', JSON.stringify(newArrTest));
             setNewQuestions(JSON.parse(localStorage.getItem('new')) || [])
         }
     }
@@ -71,33 +64,20 @@ const CreateTest = ({allTestTitles, setNewQuestions})  =>{
                     </label>
                 </div>
                 <NewQuestion 
-                newQuestion={newQuestion} setNewQuestion={setNewQuestion}
+                newQuestion={newQuestion} 
+                setNewQuestion={setNewQuestion}
                 />
-                <CorrectAnswer setCorrectAnswerInfo={setCorrectAnswerInfo} correctAnswerInfo={correctAnswerInfo} newQuestion={newQuestion} setNewQuestion={setNewQuestion}/> 
-                <InCorrectAnswer inCorrectAnswerInfo={inCorrectAnswerInfo} setInCorrectAnswerInfo={setInCorrectAnswerInfo}/>
-                {addIncorrect.firstButton &&                 
-                <button
-                onClick={(e) => setAddIncorrect({...addIncorrect, 
-                    ...addIncorrect.one=true, 
-                    ...addIncorrect.secondButton=true, 
-                    ...addIncorrect.firstButton=false})} 
-                    className="btn btn-primary" > добавить неправильный ответ 
-                </button> }
-                {addIncorrect.one && 
-                <div>
-                   <InCorrectAnswer/>
-                </div> }
-                {addIncorrect.secondButton &&                 
-                <button
-                    onClick={(e) => setAddIncorrect({...addIncorrect, 
-                    ...addIncorrect.two=true, 
-                    ...addIncorrect.secondButton=false})} 
-                    className="btn btn-primary" > добавить неправильный ответ 
-                </button> }
-                {addIncorrect.two && 
-                <div>
-                   <InCorrectAnswer/>
-                </div> }
+                <CorrectAnswer 
+                setCorrectAnswerInfo={setCorrectAnswerInfo} 
+                correctAnswerInfo={correctAnswerInfo} 
+                newQuestion={newQuestion} 
+                setNewQuestion={setNewQuestion}
+                /> 
+                {newQuestion.type !== "Text" && 
+                <InCorrectAnswer 
+                inCorrectAnswerInfo={inCorrectAnswerInfo} 
+                setInCorrectAnswerInfo={setInCorrectAnswerInfo}
+                />}
             </div>
             <Link onClick={(e)=> testIsReadyHendel(e)} className="btn btn-primary" to='/start'> вопрос готов </Link>
         </div>

@@ -5,8 +5,6 @@ const InputText = ({oneQuestion, number, setAnsver}) =>{
   const answerValidation =(value)=> {
     (value.toLowerCase() === oneQuestion.answer[0].title.toString().toLowerCase())
               ? setAnsver(1): setAnsver(0)
-    console.log(value.toLowerCase())
-    console.log(oneQuestion.answer[0])
   }
 
   return (
@@ -15,9 +13,6 @@ const InputText = ({oneQuestion, number, setAnsver}) =>{
         <h1> {number+1}. {oneQuestion.title} ?</h1>
         {oneQuestion.url && <img src={oneQuestion.url} alt="oneQuestion.title"/>}
         <input onChange={(e)=> answerValidation(e.target.value) } key={oneQuestion.answer[0].title} type="text" placeholder="введите ответ" />
-        {/* {oneQuestion.answer.map(elem => {
-        return <input onChange={(e)=> answerValidation(e.target.value) } key={elem.title} type="text" placeholder="введите ответ" />
-        })} */}
       </div>
     </div>
   );

@@ -9,7 +9,6 @@ const Select = ({oneQuestion, number, setAnsver, answerForOption}) =>{
     if(answer){
       setAnsver(answer.point)
     } 
-    // console.log(answer.point)
   }
   
   return (

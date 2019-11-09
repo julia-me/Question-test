@@ -1,15 +1,17 @@
 import React, {useState, useEffect}  from 'react';
-import "./App.css"
-import * as Questions from './data/questionData.js'
-import Question from './components/Question'
-import Start from './components/StartPage'
-import Result from './components/Result'
-import Timer from './components/Timer'
-import CreateTest from './components/CreateTest/CreateTest'
+import "./App.css";
+import {connect} from 'react-redux';
+import * as Questions from './data/questionData.js';
+import Question from './components/Question';
+import Start from './components/StartPage';
+import Result from './components/Result';
+import Timer from './components/Timer';
+import CreateTest from './components/CreateTest/CreateTest';
 
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-localStorage.setItem('test', JSON.stringify([]))
-const allTestsArr=Object.entries(Questions)
+// let allTestsArr=Object.entries(Questions);
+localStorage.setItem('dataAnswers', JSON.stringify(Object.entries(Questions))) 
+let allTestsArr=JSON.parse(localStorage.getItem('dataAnswers')) || []
 
 
 
@@ -17,19 +19,21 @@ const App = ()  =>{
   const [maxPoints, setMaxPoints]=useState('')
   const [usersTime, setUsersTime]= useState(1)
   const [data, setData] = useState([])
-  const [earnedPoints, setEarnedPoints]= useState(0)
-  const allTestTitles= Object.keys(Questions)
-  const [newQuestions, setNewQuestions] = useState(JSON.parse(localStorage.getItem('new')) || [])
+  let allTestTitles= Object.keys(Questions)
+  const [newQuestions, setNewQuestions] = useState(JSON.parse(localStorage.getItem('new')) || []);
+  console.log('newQuestions', newQuestions)
+  console.log('allTestTitles', allTestsArr)
 
 
   useEffect(()=> {
+    allTestsArr=JSON.parse(localStorage.getItem('dataAnswers')) || []
     allTestsArr.map(arr => {
       return newQuestions.map( quest => {
         if(arr[0] === quest[0]){
-          return arr[1].push(quest[1])
+          return arr[1] = [...arr[1], quest[1]]
         }
       })
-    })
+    });
   }, [newQuestions])
 
   const TestPage = ({ match }) => {
@@ -38,7 +42,6 @@ const App = ()  =>{
         return setData(test[1])
       }
   })
-
       return(
       <div className="App">
         <h1> Название теста: {match.params.pageTitle}</h1>
@@ -49,7 +52,6 @@ const App = ()  =>{
         />
       </div>
       )
-
   }
 
   return (
@@ -66,12 +68,11 @@ const App = ()  =>{
 
       <Route path="/result">
         < Result 
-        maxPoints={maxPoints}
-        earnedPoints={earnedPoints}/>
+        maxPoints={maxPoints}/>
       </Route> 
 
       <Route path="/create">
-        < CreateTest allTestTitles={allTestTitles} setNewQuestions={setNewQuestions}/>
+        <CreateTest allTestTitles={allTestTitles} setNewQuestions={setNewQuestions}/>
       </Route> 
 
       <Route path="/:pageTitle" component={TestPage}/>
@@ -83,4 +84,4 @@ const App = ()  =>{
 }
 
  
-export default App;
+export default connect(null, null)(App);

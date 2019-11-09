@@ -10,7 +10,7 @@ const CorrectAnswer = ({setCorrectAnswerInfo, correctAnswerInfo, newQuestion, se
             setCorrectAnswerInfo({...correctAnswerInfo, point: +point})
         }
         if(!point){
-            setCorrectAnswerInfo({...correctAnswerInfo, point:100})
+            setCorrectAnswerInfo({...correctAnswerInfo, point:1})
         }
     }
 
@@ -29,9 +29,3 @@ const CorrectAnswer = ({setCorrectAnswerInfo, correctAnswerInfo, newQuestion, se
 }
  
 export default CorrectAnswer;
-
-// answer: [{
-//     title:'',
-//     isTrue:'',
-//     point:'',
-// }]

@@ -8,8 +8,7 @@ const Timer = ({usersTime})  =>{
     let history = useHistory();
 
     useEffect(()=> {
-        let timer =
-            setTimeout(()=> {
+    setTimeout(()=> {
                 if(time>0){
                     setTime(time-1)
                 }

@@ -425,4 +425,5 @@ const randomQuestionsArr = [
   },
 ]
 
+// localStorage.setItem('dataAnswers', JSON.stringify([geographyAQuestionsArr, biologyQuestionsArr, randomQuestionsArr])) 
 export  {geographyAQuestionsArr, biologyQuestionsArr, randomQuestionsArr}
