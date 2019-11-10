@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import * as Questions from "./data/questionData.js";
 import Question from "./components/Question";
 import Start from "./components/StartPage";
@@ -75,7 +74,4 @@ const App = () => {
   );
 };
 
-export default connect(
-  null,
-  null
-)(App);
+export default App;
